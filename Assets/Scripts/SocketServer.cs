@@ -18,17 +18,19 @@ public class SocketServer : MonoBehaviour
         Application.runInBackground = true;      
     }
 
-    public static void Execute(string command)// Execute cmd command
-    {
-        var processInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/S /C " + command)
-        {
-            CreateNoWindow = true,
-            UseShellExecute = true,
-            WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
-        };
+    // public static void Execute(string command)// Execute cmd command
+    // {
+    //     var processInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/S /C " + command)
+    //     {
+    //         CreateNoWindow = true,
+    //         UseShellExecute = true,
+    //         WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+    //     };
 
-        System.Diagnostics.Process.Start(processInfo);
-    }
+    //     System.Diagnostics.Process.Start(processInfo);
+
+
+    // }
 
     public void StartServer()
     {
@@ -36,7 +38,18 @@ public class SocketServer : MonoBehaviour
         SocketThread.IsBackground = true;
         SocketThread.Start();
         
-        Execute("cd PythonScript & python visual_measurement.py");// Execute python client script
+        // Execute("cd PythonScript & python visual_measurement.py");// Execute python client script
+
+        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo()
+        {
+        FileName = "osascript",
+        Arguments = $"-e 'tell application \"Terminal\" to activate' -e 'tell application \"Terminal\" to do script \"sh /Users/albert/Documents/GitHub/OpenVHead/Assets/Scripts/bar.sh\"'",
+        };
+        System.Diagnostics.Process proc = new System.Diagnostics.Process()
+        {
+            StartInfo = startInfo,
+        };
+        proc.Start();
     }
 
 

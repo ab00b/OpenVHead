@@ -16,7 +16,7 @@ import sys
 import socket
 
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("./data/shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor("/Users/albert/Documents/GitHub/OpenVHead/PythonScript/data/shape_predictor_68_face_landmarks.dat")
 POINTS_NUM_LANDMARK = 68
 
 clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8)) # CLAHE Object (for Adaptive histogram equalization)

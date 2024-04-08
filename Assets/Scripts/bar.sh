@@ -1,0 +1,1 @@
+cd /Users/albert/Documents/GitHub/OpenVHead/PythonScript && python visual_measurement.py
